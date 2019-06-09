@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+<JFXListView fx:id="popupList"  styleClass="popup-list-view"
+             onMouseClicked="#click"
+             xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <Label>
+        代码生成
+        <graphic>
+            <StackPane styleClass="custom-jfx-list-view-icon-container">
+                <FontIcon iconLiteral="fas-star" iconSize="18" styleClass="custom-jfx-list-view-icon"/>
+            </StackPane>
+        </graphic>
+    </Label>
+    <Label>
+        调试工具
+        <graphic>
+            <StackPane styleClass="custom-jfx-list-view-icon-container">
+                <FontIcon iconLiteral="fas-heart" iconSize="18" styleClass="custom-jfx-list-view-icon"/>
+            </StackPane>
+        </graphic>
+    </Label>
+    <Label>
+        编码工具
+        <graphic>
+            <StackPane styleClass="custom-jfx-list-view-icon-container">
+                <FontIcon iconLiteral="fas-exclamation-triangle" iconSize="18" styleClass="custom-jfx-list-view-icon"/>
+            </StackPane>
+        </graphic>
+    </Label>
+    <Label>
+        小工具
+        <graphic>
+            <StackPane styleClass="custom-jfx-list-view-icon-container">
+                <FontIcon iconLiteral="fas-university" iconSize="18" styleClass="custom-jfx-list-view-icon"/>
+            </StackPane>
+        </graphic>
+    </Label>
+    <Label>
+        宇信科技
+        <graphic>
+            <StackPane styleClass="custom-jfx-list-view-icon-container">
+                <FontIcon iconLiteral="fas-tablet-alt" iconSize="18" styleClass="custom-jfx-list-view-icon"/>
+            </StackPane>
+        </graphic>
+    </Label>
+</JFXListView>

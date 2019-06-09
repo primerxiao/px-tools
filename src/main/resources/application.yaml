@@ -1,0 +1,16 @@
+spring:
+    jmx: 
+        enabled: false
+    datasource:
+        #url: jdbc:sqlite:D:/Java/Project/px-tools/src/main/resources/data.db
+        url: jdbc:sqlite::resource:data.db
+        username:
+        password:
+        driver-class-name: org.sqlite.JDBC
+        type: com.zaxxer.hikari.HikariDataSource
+mybatis:
+    configuration:
+        use-generated-keys: true
+        map-underscore-to-camel-case: true
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
