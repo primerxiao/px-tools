@@ -80,7 +80,7 @@ public class MainServiceImpl implements MainService {
 
     @Override
     public void init(ViewFlowContext context, JFXDrawer drawer, StackPane titleBurgerContainer, JFXHamburger titleBurger, JFXPopup popup){
-        final JFXTooltip burgerTooltip = new JFXTooltip("Open drawer");
+        final JFXTooltip burgerTooltip = new JFXTooltip("打开选项");
         List<MenuItem> menuItems = menuItemMapper.listByGroupAndType("main_left", "Label");
         ObservableList<Label> labelList = FXCollections.observableArrayList();
         JFXPopup jfxPopup = new JFXPopup();
@@ -117,13 +117,13 @@ public class MainServiceImpl implements MainService {
         });
         drawer.setOnDrawerOpening(e -> {
             final Transition animation = titleBurger.getAnimation();
-            burgerTooltip.setText("Close drawer");
+            burgerTooltip.setText("关闭选项");
             animation.setRate(1);
             animation.play();
         });
         drawer.setOnDrawerClosing(e -> {
             final Transition animation = titleBurger.getAnimation();
-            burgerTooltip.setText("Open drawer");
+            burgerTooltip.setText("打开选项");
             animation.setRate(-1);
             animation.play();
         });
