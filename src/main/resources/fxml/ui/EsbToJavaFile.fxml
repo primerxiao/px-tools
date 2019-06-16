@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
-<?import javafx.scene.control.ScrollPane?>
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <HBox spacing="40">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/2.2">
+    <VBox>
         <VBox maxHeight="400" maxWidth="400" spacing="30">
             <ScrollPane>
-                <JFXListView fx:id="sheetList" styleClass="mylistview">
+                <JFXListView fx:id="sheetList" styleClass="custom-jfx-list-view">
                     <Label>索引</Label>
                     <Label>公共</Label>
                     <Label>公共</Label>
@@ -35,5 +29,5 @@
 
             </HBox>
         </VBox>
-    </HBox>
+    </VBox>
 </StackPane>
