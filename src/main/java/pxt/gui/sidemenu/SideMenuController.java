@@ -108,7 +108,8 @@ public class SideMenuController {
      */
     @PostConstruct
     public void init() {
-
+        new SideMenuController().init();
+        PxtContainer.setAutowired(this);
         Objects.requireNonNull(context, "context");
         FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject(PxtContainer.Constant.CONTENT_FLOW_HANDLER);
         sideList.propagateMouseEventsToParent();
@@ -127,7 +128,7 @@ public class SideMenuController {
                 });
             }).start();
         });
-        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
         menu.setOnMouseClicked(event -> System.out.println(menuItemMapper));
         bindNodeToController(button, ButtonController.class, contentFlow, contentFlowHandler);
 /*      bindNodeToController(checkbox, CheckboxController.class, contentFlow, contentFlowHandler);

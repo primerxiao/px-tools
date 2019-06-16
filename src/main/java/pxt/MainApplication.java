@@ -58,7 +58,6 @@ public class MainApplication extends Application implements ApplicationContextAw
         Thread thread = Thread.currentThread();
         System.out.println(thread.getId()+"###"+thread.getName());
         PxtContainer.applicationContext=applicationContext;
-        ViewFactory.applicationContext=applicationContext;
         MainApplication.applicationContext=applicationContext;
     }
 
