@@ -1,4 +1,14 @@
+server:
+    port: 8080
+    servlet:
+        context-path: /demo
+
 spring:
+    devtools:
+        add-properties: false
+    aop:
+        auto: true
+        proxy-target-class: true
     jmx: 
         enabled: false
     datasource:

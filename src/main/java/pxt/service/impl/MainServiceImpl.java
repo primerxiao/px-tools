@@ -28,7 +28,9 @@ import pxt.mapper.MenuItemMapper;
 import pxt.service.MainService;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author primerxiao
@@ -37,7 +39,6 @@ import java.util.List;
 @Log4j2
 @Service
 public class MainServiceImpl implements MainService {
-
 
     @Autowired
     private MenuItemMapper menuItemMapper;
@@ -77,61 +78,5 @@ public class MainServiceImpl implements MainService {
         stage.setScene(scene);
         stage.show();
     }
-
-    @Override
-    public void init(ViewFlowContext context, JFXDrawer drawer, StackPane titleBurgerContainer, JFXHamburger titleBurger, JFXPopup popup){
-        final JFXTooltip burgerTooltip = new JFXTooltip("打开选项");
-        List<MenuItem> menuItems = menuItemMapper.listByGroupAndType("main_left", "Label");
-        ObservableList<Label> labelList = FXCollections.observableArrayList();
-        JFXPopup jfxPopup = new JFXPopup();
-        menuItems.stream().forEach((menuItem -> {
-            Label label = new Label();
-            label.setText(menuItem.getMenuText());
-            StackPane stackPane=new StackPane();
-            stackPane.getStyleClass().add(menuItem.getMenuStyleClass());
-            FontIcon fontIcon=new FontIcon();
-            fontIcon.setIconLiteral(menuItem.getMenuIcon());
-            fontIcon.setIconSize(menuItem.getMenuIconSize());
-            fontIcon.getStyleClass().add("custom-jfx-list-view-icon");
-            stackPane.getChildren().add(fontIcon);
-            label.setGraphic(stackPane);
-            label.setOnMouseClicked((event) -> {
-                jfxPopup.hide();
-                if (drawer.isClosed() || drawer.isClosing()) {
-                    drawer.open();
-                } else {
-                    drawer.close();
-                }
-            });
-            labelList.add(label);
-        }));
-        JFXListView listView=new JFXListView();
-        listView.setItems(labelList);
-        jfxPopup.setPopupContent(listView);
-        titleBurgerContainer.setOnMouseClicked(e -> {
-            if (drawer.isOpened()||drawer.isOpening()) {
-                drawer.close();
-                return;
-            }
-            jfxPopup.show(titleBurger, JFXPopup.PopupVPosition.TOP, JFXPopup.PopupHPosition.LEFT);
-        });
-        drawer.setOnDrawerOpening(e -> {
-            final Transition animation = titleBurger.getAnimation();
-            burgerTooltip.setText("关闭选项");
-            animation.setRate(1);
-            animation.play();
-        });
-        drawer.setOnDrawerClosing(e -> {
-            final Transition animation = titleBurger.getAnimation();
-            burgerTooltip.setText("打开选项");
-            animation.setRate(-1);
-            animation.play();
-        });
-
-        popup=jfxPopup;
-
-    }
-
-
 
 }
