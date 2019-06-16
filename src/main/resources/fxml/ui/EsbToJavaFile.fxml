@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.ScrollPane?>
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox spacing="40">
+        <VBox maxHeight="400" maxWidth="400" spacing="30">
+            <ScrollPane>
+                <JFXListView fx:id="sheetList" styleClass="mylistview">
+                    <Label>索引</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                    <Label>公共</Label>
+                </JFXListView>
+            </ScrollPane>
+        </VBox>
+        <VBox maxHeight="400" maxWidth="400" spacing="10">
+            <HBox>
+
+            </HBox>
+        </VBox>
+    </HBox>
+</StackPane>

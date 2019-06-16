@@ -1,36 +1,27 @@
 package pxt.service.impl;
 
-import com.jfoenix.controls.*;
+import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyph;
 import com.jfoenix.svg.SVGGlyphLoader;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.container.DefaultFlowContainer;
 import io.datafx.controller.flow.context.ViewFlowContext;
-import javafx.animation.Transition;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import lombok.extern.log4j.Log4j2;
-import org.kordamp.ikonli.javafx.FontIcon;
+import mapper.MenuItemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import pxt.MainApplication;
-import pxt.entity.MenuItem;
 import pxt.gui.main.MainController;
-import pxt.mapper.MenuItemMapper;
 import pxt.service.MainService;
 
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author primerxiao
@@ -62,7 +53,7 @@ public class MainServiceImpl implements MainService {
         decorator.setCustomMaximize(true);
         decorator.setGraphic(new SVGGlyph(""));
         decorator.setOnCloseButtonAction(() -> System.exit(0));
-        stage.setTitle("JFoenix Demo");
+        stage.setTitle("开发助手");
         double width = 800;
         double height = 600;
         try {

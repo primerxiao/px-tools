@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXListView?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
 <?import java.lang.String?>
-<?import org.kordamp.ikonli.javafx.FontIcon?>
-<?import com.jfoenix.controls.JFXRippler?>
-<?import javafx.scene.layout.HBox?>
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
     <styleClass>
         <String fx:value="side-menu"/>
@@ -27,7 +24,7 @@
                 </StackPane>
             </JFXRippler>
         </HBox>-->
-        <Label fx:id="menu">Menu</Label>
+        <Label fx:id="esbToJavaFile">esb文档代码生成</Label>
         <!--<Label fx:id="checkbox">Check Box</Label>
         <Label fx:id="combobox">Combo Box</Label>
         <Label fx:id="dialogs">Dialogs &amp; Alert</Label>

@@ -20,7 +20,7 @@
                                 </JFXHamburger>
                             </StackPane>
                         </JFXRippler>
-                        <Label>Material Design1</Label>
+                        <Label>Primer Work Helper</Label>
                     </leftItems>
                     <rightItems>
                         <JFXRippler fx:id="optionsRippler" maskType="CIRCLE"

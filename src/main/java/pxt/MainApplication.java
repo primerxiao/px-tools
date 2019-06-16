@@ -27,20 +27,16 @@ import java.io.IOException;
  */
 @Log4j2
 @SpringBootApplication
-@MapperScan("pxt.mapper")
+@MapperScan("mapper")
 @EnableScheduling
 @EnableAsync
 @EnableAspectJAutoProxy
 public class MainApplication extends Application implements ApplicationContextAware {
 
-    public static ApplicationContext applicationContext;
-
     @FXMLViewFlowContext
     private ViewFlowContext flowContext;
 
-    public static void main(String[] args) throws IOException {
-
-        System.out.println("################");
+    public static void main(String[] args) {
         log.info("系统启动。。。。");
         SpringApplication.run(MainApplication.class, args);
         launch(args);
@@ -55,10 +51,7 @@ public class MainApplication extends Application implements ApplicationContextAw
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 
-        Thread thread = Thread.currentThread();
-        System.out.println(thread.getId()+"###"+thread.getName());
         PxtContainer.applicationContext=applicationContext;
-        MainApplication.applicationContext=applicationContext;
     }
 
 }

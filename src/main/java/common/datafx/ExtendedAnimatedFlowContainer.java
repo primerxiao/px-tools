@@ -1,4 +1,4 @@
-package pxt.datafx;
+package common.datafx;
 
 import io.datafx.controller.context.ViewContext;
 import io.datafx.controller.flow.FlowContainer;
@@ -93,7 +93,6 @@ public class ExtendedAnimatedFlowContainer extends AnimatedFlowContainer impleme
      *
      * @return image view place holder
      */
-    @Override
     public ImageView getPlaceholder() {
         return placeholder;
     }
@@ -103,12 +102,10 @@ public class ExtendedAnimatedFlowContainer extends AnimatedFlowContainer impleme
      *
      * @return the duration for the animation
      */
-    @Override
     public Duration getDuration() {
         return duration;
     }
 
-    @Override
     public StackPane getView() {
         return view;
     }

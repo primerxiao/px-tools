@@ -14,9 +14,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import org.springframework.beans.factory.annotation.Autowired;
 import pxt.gui.uicomponents.ButtonController;
-import pxt.mapper.MenuItemMapper;
+import pxt.gui.uicomponents.EsbToJavaFileController;
 
 import javax.annotation.PostConstruct;
 import java.util.Objects;
@@ -27,9 +26,6 @@ import java.util.Objects;
 @ViewController(value = "/fxml/SideMenu.fxml", title = "Material Design Example")
 public class SideMenuController {
 
-    @Autowired
-    private MenuItemMapper menuItemMapper;
-
     @FXMLViewFlowContext
     private ViewFlowContext context;
 
@@ -38,7 +34,8 @@ public class SideMenuController {
     private Label button;
 
     @FXML
-    private Label menu;
+    @ActionTrigger("esbToJavaFile")
+    private Label esbToJavaFile;
 
     @FXML
     @ActionTrigger("checkbox")
@@ -108,7 +105,6 @@ public class SideMenuController {
      */
     @PostConstruct
     public void init() {
-        new SideMenuController().init();
         PxtContainer.setAutowired(this);
         Objects.requireNonNull(context, "context");
         FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject(PxtContainer.Constant.CONTENT_FLOW_HANDLER);
@@ -128,9 +124,9 @@ public class SideMenuController {
                 });
             }).start();
         });
-         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
-        menu.setOnMouseClicked(event -> System.out.println(menuItemMapper));
+        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
         bindNodeToController(button, ButtonController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(esbToJavaFile, EsbToJavaFileController.class, contentFlow, contentFlowHandler);
 /*      bindNodeToController(checkbox, CheckboxController.class, contentFlow, contentFlowHandler);
         bindNodeToController(combobox, ComboBoxController.class, contentFlow, contentFlowHandler);
         bindNodeToController(dialogs, DialogController.class, contentFlow, contentFlowHandler);

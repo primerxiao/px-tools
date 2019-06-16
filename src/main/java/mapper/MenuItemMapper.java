@@ -1,8 +1,8 @@
-package pxt.mapper;
+package mapper;
 
+import mapper.entity.MenuItem;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import pxt.entity.MenuItem;
 
 import java.util.List;
 
@@ -28,6 +28,5 @@ public interface MenuItemMapper {
      */
     @Select("select * from menu_item where menu_group =#{group} and menu_type=#{type} order by menu_index")
     List<MenuItem> listByGroupAndType(@Param("group") String group, @Param("type") String type);
-
 
 }

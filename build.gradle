@@ -45,7 +45,14 @@ dependencies {
     implementation group: 'io.reactivex.rxjava2', name: 'rxjavafx', version: '2.11.0-RC16'
     implementation group: 'com.squareup', name: 'javapoet', version: '1.11.1'
     implementation group: 'cn.hutool', name: 'hutool-all', version: '4.5.11'
-    compile fileTree(dir: 'src/main/libs', includes: ['*.jar'])
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.0'
+
+    // https://mvnrepository.com/artifact/de.jensd/fontawesomefx
+    implementation group: 'de.jensd', name: 'fontawesomefx', version: '8.9'
+
+
 
 
 }

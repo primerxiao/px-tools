@@ -1,11 +1,7 @@
 package pxt.service;
 
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.controls.JFXPopup;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.context.ViewFlowContext;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;

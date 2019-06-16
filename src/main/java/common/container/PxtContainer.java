@@ -1,5 +1,6 @@
 package common.container;
 
+import common.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
@@ -16,7 +17,6 @@ public class PxtContainer {
      */
     public static ApplicationContext applicationContext;
 
-
     public static void setAutowired(Object object) {
         if (!Objects.isNull(object)) {
             Field[] declaredFields = object.getClass().getDeclaredFields();
@@ -25,9 +25,15 @@ public class PxtContainer {
                 if (Objects.isNull(annotation)) {
                     continue;
                 }
+                if (PxtContainer.applicationContext == null) {
+                    continue;
+                }
                 declaredField.setAccessible(true);
+                CommonService bean = (CommonService) PxtContainer.applicationContext.getBean(declaredField.getType());
+
+                bean.setController(object);
                 try {
-                    declaredField.set(object, Objects.isNull(PxtContainer.applicationContext)?null:PxtContainer.applicationContext.getBean(declaredField.getType()));
+                    declaredField.set(object, bean);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }

@@ -1,4 +1,4 @@
-package pxt.entity;
+package mapper.entity;
 
 
 import lombok.Data;
