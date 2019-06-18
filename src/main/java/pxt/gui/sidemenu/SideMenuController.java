@@ -1,6 +1,7 @@
 package pxt.gui.sidemenu;
 
 import com.jfoenix.controls.JFXListView;
+import common.container.PxtContainer;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
@@ -13,8 +14,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
 import pxt.gui.uicomponents.ButtonController;
+import pxt.gui.uicomponents.EsbToJavaFileController;
 
 import javax.annotation.PostConstruct;
 import java.util.Objects;
@@ -33,8 +34,8 @@ public class SideMenuController {
     private Label button;
 
     @FXML
-    @ActionTrigger("menu")
-    private Label menu;
+    @ActionTrigger("esbToJavaFile")
+    private Label esbToJavaFile;
 
     @FXML
     @ActionTrigger("checkbox")
@@ -104,8 +105,9 @@ public class SideMenuController {
      */
     @PostConstruct
     public void init() {
+        PxtContainer.setAutowired(this);
         Objects.requireNonNull(context, "context");
-        FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
+        FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject(PxtContainer.Constant.CONTENT_FLOW_HANDLER);
         sideList.propagateMouseEventsToParent();
         sideList.getSelectionModel().selectedItemProperty().addListener((o, oldVal, newVal) -> {
             new Thread(()->{
@@ -124,7 +126,8 @@ public class SideMenuController {
         });
         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
         bindNodeToController(button, ButtonController.class, contentFlow, contentFlowHandler);
-/*        bindNodeToController(checkbox, CheckboxController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(esbToJavaFile, EsbToJavaFileController.class, contentFlow, contentFlowHandler);
+/*      bindNodeToController(checkbox, CheckboxController.class, contentFlow, contentFlowHandler);
         bindNodeToController(combobox, ComboBoxController.class, contentFlow, contentFlowHandler);
         bindNodeToController(dialogs, DialogController.class, contentFlow, contentFlowHandler);
         bindNodeToController(icons, IconsController.class, contentFlow, contentFlowHandler);

@@ -1,9 +1,10 @@
-package pxt.entity;
+package mapper.entity;
 
 
 import lombok.Data;
 
 /**
+ * 菜单
  * @author primerxiao
  */
 @Data
@@ -25,9 +26,8 @@ public class MenuItem {
    * 父菜单id
    */
   private int menuParentId;
-
   /**
-   * 排序
+   * 菜单索引（排序）
    */
   private int menuIndex;
   /**
@@ -35,7 +35,7 @@ public class MenuItem {
    */
   private String menuIcon;
   /**
-   *  菜单图标大小
+   * 菜单图标大小
    */
   private int menuIconSize;
   /**

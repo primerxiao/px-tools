@@ -17,7 +17,6 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
-
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     mavenCentral()
@@ -30,9 +29,10 @@ configurations {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1'
-    implementation group: 'com.alibaba', name: 'druid', version: '1.1.17'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.1.5.RELEASE'
@@ -44,4 +44,16 @@ dependencies {
     implementation 'org.kordamp.ikonli:ikonli-javafx:2.4.0'
     implementation 'org.kordamp.ikonli:ikonli-fontawesome5-pack:2.4.0'
     implementation group: 'io.reactivex.rxjava2', name: 'rxjavafx', version: '2.11.0-RC16'
+    implementation group: 'com.squareup', name: 'javapoet', version: '1.11.1'
+    implementation group: 'cn.hutool', name: 'hutool-all', version: '4.5.11'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.6'
+    // https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+    implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '4.1.0'
+
+    // https://mvnrepository.com/artifact/de.jensd/fontawesomefx
+    implementation group: 'de.jensd', name: 'fontawesomefx', version: '8.9'
+
+
+
+
 }
