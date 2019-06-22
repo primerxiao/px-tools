@@ -28,7 +28,7 @@
 
         <Label styleClass="title-label">Styling Options</Label>
         <HBox spacing="20" style="-fx-padding: 0 0 0 50;">
-            <JFXButton prefWidth="100" prefHeight="40" buttonType="RAISED" text="CUSTOM RIPPLER"
+            <JFXButton fx:id="test" prefWidth="100" prefHeight="40" buttonType="RAISED" text="CUSTOM RIPPLER"
                        styleClass="custom-jfx-button-raised"/>
         </HBox>
     </VBox>

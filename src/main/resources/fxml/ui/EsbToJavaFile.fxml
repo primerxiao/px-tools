@@ -1,33 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
            xmlns="http://javafx.com/javafx/2.2">
-    <VBox>
-        <VBox maxHeight="400" maxWidth="400" spacing="30">
-            <ScrollPane>
-                <JFXListView fx:id="sheetList" styleClass="custom-jfx-list-view">
-                    <Label>索引</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                    <Label>公共</Label>
-                </JFXListView>
-            </ScrollPane>
-        </VBox>
-        <VBox maxHeight="400" maxWidth="400" spacing="10">
+    <BorderPane maxHeight="600">
+        <left>
             <HBox>
 
+                <Label minWidth="10"></Label>
+                <Label minWidth="10"></Label>
+                <VBox alignment="TOP_CENTER">
+                    <JFXButton prefWidth="200" prefHeight="40" buttonType="RAISED" text="加载esb治理文档"
+                               styleClass="custom-jfx-button-raised"/>
+
+                    <JFXListView fx:id="sheetList" styleClass="mylistview" minWidth="-Infinity">
+                        <Label>索引</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                        <Label>公共</Label>
+                    </JFXListView>
+
+                </VBox>
             </HBox>
-        </VBox>
-    </VBox>
+        </left>
+        <center>
+            <HBox>
+                <Label minWidth="10"></Label>
+                <Label minWidth="10"></Label>
+                <Label minWidth="10"></Label>
+                <Label minWidth="10"></Label>
+                <VBox  spacing="30">
+                    <HBox>
+                        <JFXTextField alignment="CENTER"></JFXTextField>
+                    </HBox>
+                    <HBox>
+                        <JFXTextField alignment="CENTER"></JFXTextField>
+                    </HBox>
+                    <HBox>
+                        <Label>请求bean：</Label>
+                        <JFXCheckBox></JFXCheckBox>
+                        <Label>响应bean：</Label>
+                        <JFXCheckBox></JFXCheckBox>
+                    </HBox>
+                    <HBox>
+                        <Label>controller：</Label>
+                        <JFXCheckBox></JFXCheckBox>
+                        <Label>service：</Label>
+                        <JFXCheckBox></JFXCheckBox>
+                    </HBox>
+                    <JFXButton prefWidth="200" prefHeight="40" buttonType="RAISED" text="生成代码"
+                               styleClass="custom-jfx-button-raised"/>
+                </VBox>
+            </HBox>
+        </center>
+    </BorderPane>
 </StackPane>

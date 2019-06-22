@@ -2,11 +2,16 @@ package pxt.gui.sidemenu;
 
 import com.jfoenix.controls.JFXListView;
 import common.container.PxtContainer;
+import common.datafx.ExtendedAnimatedFlowContainer;
+import common.utils.JfxAlertUtil;
 import io.datafx.controller.ViewController;
+import io.datafx.controller.context.ApplicationContext;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
+import io.datafx.controller.flow.action.ActionMethod;
 import io.datafx.controller.flow.action.ActionTrigger;
+import io.datafx.controller.flow.action.FlowAction;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import io.datafx.controller.util.VetoException;
@@ -14,11 +19,15 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.util.Duration;
 import pxt.gui.uicomponents.ButtonController;
 import pxt.gui.uicomponents.EsbToJavaFileController;
 
 import javax.annotation.PostConstruct;
+import javax.xml.ws.Action;
 import java.util.Objects;
+
+import static io.datafx.controller.flow.container.ContainerAnimations.SWIPE_LEFT;
 
 /**
  * @author primerxiao
@@ -115,16 +124,16 @@ public class SideMenuController {
                     if (newVal != null) {
                         try {
                             contentFlowHandler.handle(newVal.getId());
-                        } catch (VetoException exc) {
+
+                        } catch (Exception exc) {
                             exc.printStackTrace();
-                        } catch (FlowException exc) {
-                            exc.printStackTrace();
+                            JfxAlertUtil.alert(sideList,"错误",exc.getLocalizedMessage());
                         }
                     }
                 });
             }).start();
         });
-        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+        Flow contentFlow = (Flow) context.getRegisteredObject(PxtContainer.Constant.CONTENT_FLOW);
         bindNodeToController(button, ButtonController.class, contentFlow, contentFlowHandler);
         bindNodeToController(esbToJavaFile, EsbToJavaFileController.class, contentFlow, contentFlowHandler);
 /*      bindNodeToController(checkbox, CheckboxController.class, contentFlow, contentFlowHandler);
@@ -149,8 +158,11 @@ public class SideMenuController {
         bindNodeToController(nodesList, NodesListController.class, contentFlow, contentFlowHandler);
    */ }
 
+
     private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow, FlowHandler flowHandler) {
         flow.withGlobalLink(node.getId(), controllerClass);
+
     }
+
 
 }

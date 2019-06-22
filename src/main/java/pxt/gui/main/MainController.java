@@ -7,7 +7,9 @@ import common.container.PxtContainer;
 import common.datafx.ExtendedAnimatedFlowContainer;
 import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
+import io.datafx.controller.flow.action.FlowAction;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.animation.Transition;
@@ -49,9 +51,6 @@ public final class  MainController {
     @FXML
     private JFXDrawer drawer;
 
-    @Autowired
-    private MenuItemMapper menuItemMapper;
-
     private JFXPopup toolbarPopup;
 
     private JFXPopup popup;
@@ -62,6 +61,7 @@ public final class  MainController {
     @PostConstruct
     public void init() throws Exception {
 
+        PxtContainer.drawer=drawer;
         final JFXTooltip burgerTooltip = new JFXTooltip("Open drawer");
 
         drawer.setOnDrawerOpening(e -> {

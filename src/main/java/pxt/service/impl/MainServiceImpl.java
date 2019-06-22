@@ -68,6 +68,7 @@ public class MainServiceImpl implements MainService {
                 MainApplication.class.getResource("/css/jfoenix-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+        //flow.startInStage(stage);
     }
 
 }

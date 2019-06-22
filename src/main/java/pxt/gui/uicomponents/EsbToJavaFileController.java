@@ -3,7 +3,11 @@ package pxt.gui.uicomponents;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import common.container.PxtContainer;
+import common.utils.JfxAlertUtil;
 import io.datafx.controller.ViewController;
+import io.datafx.controller.ViewNode;
+import io.datafx.controller.flow.action.ActionMethod;
+import io.datafx.controller.flow.action.ActionTrigger;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.fxml.FXML;
@@ -32,13 +36,11 @@ public class EsbToJavaFileController {
     private JFXListView<Label> sheetList;
 
     @FXML
-    private JFXButton loanEsbExcel;
-
-    @FXML
-    private Label esbExcelPath;
-
-    @FXML
     private StackPane root;
+
+    @ViewNode("loadFile-id")
+    @ActionTrigger("loadFileAction")
+    private JFXButton loadFile;
 
     @Autowired
     private EsbToJavaFileService esbToJavaFileService;
@@ -47,5 +49,11 @@ public class EsbToJavaFileController {
     public void init(){
         PxtContainer.setAutowired(this);
         esbToJavaFileService.init();
+    }
+
+    @ActionMethod("loadFileAction")
+    public void loadFileAction() {
+        JfxAlertUtil.alert(loadFile,"","asdfasdf");
+
     }
 }

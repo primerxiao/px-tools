@@ -1,5 +1,6 @@
 package common.container;
 
+import com.jfoenix.controls.JFXDrawer;
 import common.service.CommonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -16,6 +17,8 @@ public class PxtContainer {
      * spring容器
      */
     public static ApplicationContext applicationContext;
+
+    public static  JFXDrawer drawer;
 
     public static void setAutowired(Object object) {
         if (!Objects.isNull(object)) {
