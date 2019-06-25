@@ -6,6 +6,7 @@ import io.datafx.controller.ViewController;
 import io.datafx.controller.ViewNode;
 import io.datafx.controller.flow.action.ActionMethod;
 import io.datafx.controller.flow.action.ActionTrigger;
+import io.datafx.controller.flow.action.LinkAction;
 import io.datafx.controller.flow.context.ActionHandler;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.FlowActionHandler;
@@ -17,8 +18,8 @@ import javax.annotation.PostConstruct;
 /**
  * @author primerxiao
  */
-@ViewController(value = "/fxml/ui/Button.fxml", title = "Material Design Example")
-public class ButtonController {
+@ViewController(value = "/fxml/ui/navigation.fxml", title = "导航")
+public class NavigationController {
 
     @FXMLViewFlowContext
     private ViewFlowContext flowContext;
@@ -26,17 +27,13 @@ public class ButtonController {
     @ActionHandler
     private FlowActionHandler flowActionHandler;
 
-    @FXML
-    @ActionTrigger("myAction")
-    private JFXButton test;
+    @ViewNode
+    @LinkAction(EsbToJavaFileController.class)
+    private JFXButton linksManage;
 
     @PostConstruct
     public void init() {
-
+        
     }
 
-    @ActionMethod("myAction")
-    public void onAction(){
-        JfxAlertUtil.alert(test,"","adfasdf");
-    }
 }

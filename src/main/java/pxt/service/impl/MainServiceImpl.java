@@ -1,27 +1,28 @@
 package pxt.service.impl;
 
-import com.jfoenix.controls.JFXDecorator;
-import com.jfoenix.svg.SVGGlyph;
-import com.jfoenix.svg.SVGGlyphLoader;
+import common.container.PxtContainer;
+import common.service.CommonService;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.FlowException;
+import io.datafx.controller.flow.FlowHandler;
 import io.datafx.controller.flow.container.DefaultFlowContainer;
-import io.datafx.controller.flow.context.ViewFlowContext;
-import javafx.collections.ObservableList;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
+import io.datafx.controller.util.VetoException;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import lombok.extern.log4j.Log4j2;
 import mapper.MenuItemMapper;
+import mapper.entity.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import pxt.MainApplication;
 import pxt.gui.main.MainController;
+import pxt.gui.sidemenu.SideMenuController;
+import pxt.gui.uicomponents.ButtonController;
+import pxt.gui.uicomponents.EsbToJavaFileController;
+import pxt.gui.uicomponents.NavigationController;
 import pxt.service.MainService;
 
-import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author primerxiao
@@ -29,46 +30,35 @@ import java.io.IOException;
  */
 @Log4j2
 @Service
-public class MainServiceImpl implements MainService {
+public class MainServiceImpl extends CommonService<MainController> implements MainService {
 
     @Autowired
     private MenuItemMapper menuItemMapper;
 
-    @Async("asyncServiceExecutor")
     @Override
-    public void loadGlyphsFont() throws IOException {
+    public void init() throws FlowException {
 
-        SVGGlyphLoader.loadGlyphsFont(MainApplication.class.getResourceAsStream("/fonts/icomoon.svg"),
-                "icomoon.svg");
-    }
-    @Override
-    public void start(Stage stage,ViewFlowContext flowContext) throws IOException, FlowException {
-        loadGlyphsFont();
-        Flow flow = new Flow(MainController.class);
-        DefaultFlowContainer container = new DefaultFlowContainer();
-        flowContext = new ViewFlowContext();
-        flowContext.register("Stage", stage);
-        flow.createHandler(flowContext).start(container);
-        JFXDecorator decorator = new JFXDecorator(stage, container.getView());
-        decorator.setCustomMaximize(true);
-        decorator.setGraphic(new SVGGlyph(""));
-        decorator.setOnCloseButtonAction(() -> System.exit(0));
-        stage.setTitle("开发助手");
-        double width = 800;
-        double height = 600;
-        try {
-            Rectangle2D bounds = Screen.getScreens().get(0).getBounds();
-            width = bounds.getWidth() / 2.5;
-            height = bounds.getHeight() / 1.35;
-        }catch (Exception e){ }
+        Flow innerFlow = new Flow(NavigationController.class);
+        final FlowHandler flowHandler = innerFlow.createHandler(this.controller.getContext());
+        this.controller.getContext().register(PxtContainer.Constant.CONTENT_FLOW_HANDLER, flowHandler);
+        this.controller.getContext().register(PxtContainer.Constant.CONTENT_FLOW, innerFlow);
+        this.controller.getDrawer().setContent(flowHandler.start(new DefaultFlowContainer()));
+        this.controller.getContext().register(PxtContainer.Constant.CONTENT_PANE, this.controller.getDrawer().getContent().get(0));
+        Flow contentFlow = (Flow) this.controller.getContext().getRegisteredObject(PxtContainer.Constant.CONTENT_FLOW);
+        contentFlow.withGlobalLink("esbCodeHelper", EsbToJavaFileController.class);
 
-        Scene scene = new Scene(decorator, width, height);
-        final ObservableList<String> stylesheets = scene.getStylesheets();
-        stylesheets.addAll(
-                MainApplication.class.getResource("/css/jfoenix-main.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-        //flow.startInStage(stage);
+        this.controller.getEsbCodeHelper().setOnAction(event -> {
+            try {
+                flowHandler.handle("esbCodeHelper");
+            } catch (VetoException e) {
+                e.printStackTrace();
+            } catch (FlowException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
+
+
 
 }

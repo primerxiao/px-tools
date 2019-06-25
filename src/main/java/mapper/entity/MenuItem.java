@@ -13,9 +13,12 @@ public class MenuItem {
   /**
    * 菜单id
    */
-  private int menuId;
+  private String id;
   /**
    * 菜单类型
+   * menus
+   * group
+   * menu
    */
   private String menuType;
   /**
@@ -25,26 +28,21 @@ public class MenuItem {
   /**
    * 父菜单id
    */
-  private int menuParentId;
+  private int parentId;
   /**
    * 菜单索引（排序）
    */
   private int menuIndex;
   /**
-   * 菜单图标
+   * 菜单动作
+   * click
+   * controller
    */
-  private String menuIcon;
+  private String menuAction;
+
   /**
-   * 菜单图标大小
+   * 菜单动作 controller 对应的classname
    */
-  private int menuIconSize;
-  /**
-   * 菜单样式
-   */
-  private String menuStyleClass;
-  /**
-   * 菜单组
-   */
-  private int menuGroup;
+  private String controllerName;
 
 }

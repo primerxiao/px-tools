@@ -15,7 +15,8 @@
                 <Label minWidth="10"></Label>
                 <Label minWidth="10"></Label>
                 <VBox alignment="TOP_CENTER">
-                    <JFXButton prefWidth="200" prefHeight="40" buttonType="RAISED" text="加载esb治理文档"
+                    <JFXButton fx:id="loadFile"
+                            prefWidth="200" prefHeight="40" buttonType="RAISED" text="加载esb治理文档"
                                styleClass="custom-jfx-button-raised"/>
 
                     <JFXListView fx:id="sheetList" styleClass="mylistview" minWidth="-Infinity">

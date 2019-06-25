@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/2.2">
+    <VBox maxWidth="400" maxHeight="400" spacing="10">
+        <Label styleClass="title-label">常用工具</Label>
+        <HBox spacing="20" style="-fx-padding: 0 0 0 50;">
+            <JFXButton fx:id="linksManage" prefWidth="100" prefHeight="40" buttonType="FLAT" text="链接管理"
+                       style="-fx-text-fill:#5264AE;-fx-font-size:14px;"/>
+            <JFXButton fx:id="pwdsManage" prefWidth="100" prefHeight="40" buttonType="FLAT" text="密码管理"
+                       style="-fx-text-fill:#5264AE;-fx-font-size:14px;"/>
+        </HBox>
+        <Label styleClass="title-label">代码助手</Label>
+        <HBox spacing="40" style="-fx-padding: 0 0 0 50;">
+            <JFXButton prefWidth="100" prefHeight="40" buttonType="FLAT" text="Esb代码助手"
+                       style="-fx-text-fill:#5264AE;-fx-font-size:14px;"/>
+            <JFXButton prefWidth="150" prefHeight="40" buttonType="FLAT" text="Mybatis代码助手"
+                       style="-fx-text-fill:#5264AE;-fx-font-size:14px;"/>
+        </HBox>
+
+        <Label styleClass="title-label">Styling Options</Label>
+        <HBox spacing="20" style="-fx-padding: 0 0 0 50;">
+            <JFXButton prefWidth="100" prefHeight="40" buttonType="FLAT" text="COLORED"
+                       style="-fx-text-fill:#5264AE;-fx-font-size:14px;"/>
+        </HBox>
+    </VBox>
+</StackPane>
+

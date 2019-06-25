@@ -12,21 +12,20 @@ import java.util.List;
  */
 public interface MenuItemMapper {
     /**
-     * 根据group查询所有菜单
+     * 根据菜单类型查询所有菜单
      *
-     * @param group
+     * @param menuType
      * @return
      */
-    @Select("select * from menu_item where menu_group =#{group} ")
-    List<MenuItem> listByGroup(@Param("group") String group);
+    @Select("select * from menu_item where menu_type =#{menuType} order by menu_index asc ")
+    List<MenuItem> listByMenuType(@Param("menuType") String menuType);
 
     /**
-     * 根据group和type查询所有列表
-     * @param group
-     * @param type
+     * 根据父id查询所有菜单
+     * @param parentId
      * @return
      */
-    @Select("select * from menu_item where menu_group =#{group} and menu_type=#{type} order by menu_index")
-    List<MenuItem> listByGroupAndType(@Param("group") String group, @Param("type") String type);
+    @Select("select * from menu_item where parent_id =#{parentId} order by menu_index asc ")
+    List<MenuItem> listByParentId(@Param("parentId")String parentId);
 
 }

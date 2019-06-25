@@ -38,7 +38,7 @@ public class EsbToJavaFileController {
     @FXML
     private StackPane root;
 
-    @ViewNode("loadFile-id")
+    @FXML
     @ActionTrigger("loadFileAction")
     private JFXButton loadFile;
 

@@ -1,8 +1,10 @@
 package pxt.service;
 
+import common.service.CommonService;
 import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.stage.Stage;
+import pxt.gui.main.MainController;
 
 import java.io.IOException;
 
@@ -11,17 +13,6 @@ import java.io.IOException;
  * @date 2019/6/9
  */
 public interface MainService {
-    /**
-     * 加载GlyphsFont
-     * @throws IOException
-     */
-    public void loadGlyphsFont() throws IOException;
 
-    /**
-     * 启动程序
-     * @param stage
-     * @param flowContext
-     * @throws IOException
-     */
-    public void start(Stage stage, ViewFlowContext flowContext) throws IOException, FlowException;
-}
+    void init() throws FlowException;
+   }

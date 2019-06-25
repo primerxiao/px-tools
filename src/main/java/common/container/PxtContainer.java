@@ -1,12 +1,17 @@
 package common.container;
 
 import com.jfoenix.controls.JFXDrawer;
+import common.datafx.ExtendedAnimatedFlowContainer;
 import common.service.CommonService;
+import io.datafx.controller.flow.context.ViewFlowContext;
+import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import java.lang.reflect.Field;
 import java.util.Objects;
+
+import static io.datafx.controller.flow.container.ContainerAnimations.SWIPE_LEFT;
 
 /**
  * @author primerxiao
@@ -18,7 +23,15 @@ public class PxtContainer {
      */
     public static ApplicationContext applicationContext;
 
-    public static  JFXDrawer drawer;
+    public static ViewFlowContext viewFlowContext;
+
+    public static  ExtendedAnimatedFlowContainer extendedAnimatedFlowContainer;
+
+    static {
+        viewFlowContext=new ViewFlowContext();
+        final Duration containerAnimationDuration = Duration.millis(320);
+        extendedAnimatedFlowContainer = new ExtendedAnimatedFlowContainer(containerAnimationDuration, SWIPE_LEFT);
+    }
 
     public static void setAutowired(Object object) {
         if (!Objects.isNull(object)) {
