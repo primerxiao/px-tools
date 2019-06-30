@@ -7,22 +7,14 @@ import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.FlowHandler;
 import io.datafx.controller.flow.container.DefaultFlowContainer;
 import io.datafx.controller.util.VetoException;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import lombok.extern.log4j.Log4j2;
 import mapper.MenuItemMapper;
-import mapper.entity.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pxt.gui.main.MainController;
-import pxt.gui.sidemenu.SideMenuController;
-import pxt.gui.uicomponents.ButtonController;
 import pxt.gui.uicomponents.EsbToJavaFileController;
 import pxt.gui.uicomponents.NavigationController;
 import pxt.service.MainService;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author primerxiao
